@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+    <style>
+        td.custom-cell {
+            color: #fff;
+            background-color: rgb(36, 152, 209);
+            text-align: center;
+        }
+
+        td.custom-cell2 {
+            color: #000;
+            background-color: rgb(204, 255, 255);
+        }
+
+        td.custom-cell3 {
+            color: #000;
+            background-color: rgb(247, 247, 247);
+        }
+
+        .custom-table thead th:nth-child(even),
+        .custom-table tbody tr:nth-child(odd) th {
+            background-color: #d7f1e1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hot"></div>
+
+
+    <script type="text/javascript">
+        const container = document.getElementById('hot');
+        var a = '1.外部因素（1）2020年受疫情影响，前3个月销售额都未到到预期。21年中国消费市场恢复正规，顾客消费需求持续向好，1-3月份保证了业绩的平稳。（2）随着90后开始成为消费的主力，该年龄段的顾客群体，与企业的客群定位比较吻合；（3）四个一线城市，作为国际大都会，商圈众多，顾客消费能力强；'
+        var b = '1.市场政策：（1）上海区，在区域二级商圈，新开3家购物中心店，3月1家，7月1家，9月1家，确保开店2月后盈利；（2）深圳、广州在区域二级商圈，各开一家购物中心新店，6月份前开店，2月后确保盈利；（3）北京区域关闭1-2家利润较差店铺，4月1家，6月1家；'
+        const hot = new Handsontable(container, {
+            // 数据data模拟
+            // data: [
+            //     ['类别', '序号', '2020年实绩', '', '', '', '2021年实绩', '', '', ''],
+            //     ['', '', '店铺数', '店均额', '销售额', '占比', '店铺数', '店均额', '销售额', '占比'],
+            //     ['北京', '1', '4', '231.34', '925.38', '22.99%', '3', '310.00', '930.00', '20.00%'],
+            //     ['上海', '2', '3', '135.14', '405.43', '10.07%', '6', '93.00', '558.00', '12.00%'],
+            //     ['广州', '3', '8', '208.86', '1670.85', '41.51%', '9', '217.00', '1953.00', '42.00%'],
+            //     ['深圳', '4', '5', '204.74', '1023.72', '25.43%', '6', '201.50', '1209.00', '26.00%'],
+            //     ['合计', '5', '20', '201.27', '4025.38', '100.00%', '24', '193.75', '4650.00', '100.00%'],
+            //     ['原因分析', '6', this.a, '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['基本对策', '7', this.b, '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            //     ['', '', '', '', '', '', '', '', '', ''],
+            // ],
+            data: [
+                ['类别', '序号', '2020年实绩', '', '', '', '2021年实绩', '', '', ''],
+                ['', '', '店铺数', '店均额', '销售额', '占比', '店铺数', '店均额', '销售额', '占比'],
+                ['北京', '1', '4', '', '925.38', '', '3', '', '930.00', ''],
+                ['上海', '2', '3', '', '405.43', '', '6', '', '558.00', ''],
+                ['广州', '3', '8', '', '1670.85', '', '9', '', '1953.00', ''],
+                ['深圳', '4', '5', '', '1023.72', '', '6', '', '1209.00', ''],
+                ['合计', '5', '20', '', '4025.38', '100.00%', '', '193.75', '4650.00', '100.00%'],
+                ['原因分析', '6', this.a, '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['基本对策', '7', this.b, '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+            ],
+            colHeaders: true,
+            rowHeaders: true,
+            width: '700',
+            height: '700',
+            fixedColumnsLeft: 2,//固定左边列数
+            fixedRowsTop: 2,//固定上边横数
+            manualColumnMove: true,
+            manualRowMove: true,
+            contextMenu: true,
+            comments: true,
+            //className: '.custom-cell4',
+            //hiddenRows: true,//隐藏行
+            // rowHeights: 40,
+
+            // 样式存放cell
+            cell: [
+                { row: 0, col: 1, comment: { value: 'A read-only comment.', readOnly: true } },
+                { row: 0, col: 3, comment: { value: 'A read-only comment.', readOnly: true } },
+                { row: 0, col: 0, className: 'custom-cell', },
+                { row: 0, col: 1, className: 'custom-cell', },
+                { row: 0, col: 2, className: 'custom-cell', },
+                { row: 0, col: 6, className: 'custom-cell', },
+                { row: 1, col: 2, className: 'custom-cell', },
+                { row: 1, col: 3, className: 'custom-cell', },
+                { row: 1, col: 4, className: 'custom-cell', },
+                { row: 1, col: 5, className: 'custom-cell', },
+                { row: 1, col: 6, className: 'custom-cell', },
+                { row: 1, col: 7, className: 'custom-cell', },
+                { row: 1, col: 8, className: 'custom-cell', },
+                { row: 1, col: 9, className: 'custom-cell', },
+                { row: 1, col: 10, className: 'custom-cell', },
+                //灰色
+                { row: 2, col: 0, className: 'custom-cell3', },
+                { row: 2, col: 1, className: 'custom-cell3', },
+                { row: 3, col: 0, className: 'custom-cell3', },
+                { row: 3, col: 1, className: 'custom-cell3', },
+                { row: 4, col: 0, className: 'custom-cell3', },
+                { row: 4, col: 1, className: 'custom-cell3', },
+                { row: 5, col: 0, className: 'custom-cell3', },
+                { row: 5, col: 1, className: 'custom-cell3', },
+                { row: 6, col: 0, className: 'custom-cell3', },
+                { row: 6, col: 1, className: 'custom-cell3', },
+                { row: 7, col: 0, className: 'custom-cell3', },
+                { row: 7, col: 1, className: 'custom-cell3', },
+                { row: 9, col: 0, className: 'custom-cell3', },
+                { row: 9, col: 1, className: 'custom-cell3', },
+                //青色
+                { row: 2, col: 6, className: 'custom-cell2', },
+                { row: 3, col: 6, className: 'custom-cell2', },
+                { row: 4, col: 6, className: 'custom-cell2', },
+                { row: 5, col: 6, className: 'custom-cell2', },
+                { row: 6, col: 8, className: 'custom-cell2', },
+                { row: 2, col: 9, className: 'custom-cell2', },
+                { row: 3, col: 9, className: 'custom-cell2', },
+                { row: 4, col: 9, className: 'custom-cell2', },
+                { row: 5, col: 9, className: 'custom-cell2', },
+                { row: 7, col: 2, className: 'custom-cell2', },
+                { row: 9, col: 2, className: 'custom-cell2', },
+            ],
+            manualColumnResize: true,//自定义列高
+            licenseKey: 'non-commercial-and-evaluation',
+
+            // 单元格分配
+            mergeCells: [{ row: 0, col: 0, rowspan: 2, colspan: 1 },
+            { row: 0, col: 1, rowspan: 2, colspan: 1 },
+            { row: 0, col: 2, rowspan: 1, colspan: 4 },
+            { row: 0, col: 6, rowspan: 1, colspan: 4 },
+            { row: 9, col: 2, rowspan: 2, colspan: 8 },
+            { row: 7, col: 2, rowspan: 2, colspan: 8 },
+            { row: 9, col: 0, rowspan: 2, colspan: 1 },
+            { row: 7, col: 0, rowspan: 2, colspan: 1 },
+            { row: 9, col: 1, rowspan: 2, colspan: 1 },
+            { row: 7, col: 1, rowspan: 2, colspan: 1 },
+            ],
+
+            // 只读
+            cells: function (row, col, prop) {
+                var cellSet = {};
+                // 指定第一行只读
+                if (row <= 1 || col <= 1) {
+                    cellSet.readOnly = true;
+                }
+                return cellSet;
+            },
+        });
+        //    var da1 =new Number(hot.getDataAtCell(2,2));//根据行列索引获取单元格的值
+        //    var da2 =new Number(hot.getDataAtCell(3,2));
+        //    var da3 =new Number(hot.getDataAtCell(4,2));
+        //    var da4 =new Number(hot.getDataAtCell(5,2));
+        //    //hot.setDataAtCell(0, 0, 'new value');
+        //     var str1 = aa.split("\n");
+        //     var num =0
+        //    for (let index = 0; index < str1.length; index++) {
+        //     num+=new Number(str1[index])
+        //    }
+        // var aa = hot.getCopyableText(2,2,5,2);//查找一段区间的单元格
+        var str1 = hot.getCopyableText(2, 2, 5, 2).split("\n");
+         console.log(str1)
+
+        // 分割字符串数组params想要分隔的字符串
+        function f(params) {
+            var num = 0
+            for (let index = 0; index < params.length; index++) {
+                num += new Number(params[index])
+            }
+            return num;
+        }
+
+
+        // //计算平均值
+        // //取平均值函数//param1 数量 param2 总额 col想要设置的列数
+        // function avg(paramsst, paramsen, col) {
+        //     var num = 0.00
+        //     for (let index = 0; index < paramsst.length; index++) {
+
+        //         num = new Number(paramsen[index]) / new Number(paramsst[index]);
+        //         // alert(num)
+        //         hot.setDataAtCell(index + 2, col, num.toFixed(2))
+        //     }
+        // }
+        // avg(hot.getData(2, 2, 6, 2), hot.getData(2, 4, 6, 4), 3)
+        // avg(hot.getData(2, 6, 6, 6), hot.getData(2, 8, 6, 8), 7)
+
+
+        //    console.log(f(str1))//字符串拆分成数组在计算的和
+        hot.setDataAtCell(6, 2, f(str1))//输入索引位置为6 2的单元格
+        //给店均额总数赋值
+        //var str = hot.getCopyableText(2,3,5,3).split("\n");
+        //console.log(str)
+        //
+        //hot.setDataAtCell(6, 3, f(hot.getCopyableText(2,3,5,3).split("\n")))
+        //    console.log(str)
+        hot.setDataAtCell(6, 4, f(hot.getCopyableText(2, 4, 5, 4).split("\n")))
+        //hot.setDataAtCell(6, 5, f(hot.getCopyableText(2,5,5,5).split("\n")))
+        hot.setDataAtCell(6, 6, f(hot.getCopyableText(2, 6, 5, 6).split("\n")))
+        //hot.setDataAtCell(6, 7, f(hot.getCopyableText(2, 7, 5, 7).split("\n")))
+        hot.setDataAtCell(6, 8, f(hot.getCopyableText(2, 8, 5, 8).split("\n")))
+        // 以上是进项表格中的单元格加减运算
+
+        // 计算百分制计算params输入的是字符串数组 col是想要赋值到那一列，最后一个是已经算好的int数据 用最后一个除以前面的就是把粉笔
+        function divisio(params, col) {
+            var num = 0.00
+            for (let index = 0; index < params.length - 1; index++) {
+
+                num = ((new Number(params[index])) / params[params.length - 1]) * 100
+                hot.setDataAtCell(index + 2, col, num.toFixed(2) + '%')
+            }
+            console.log(params[params.length - 1])
+            return num;
+        }
+        //调用方法
+        divisio(hot.getData(2, 4, 6, 4), 5);
+        divisio(hot.getData(2, 8, 6, 8), 9);
+
+        //计算平均值
+        //取平均值函数//param1 数量 param2 总额 col想要设置的列数
+        function avg(paramsst, paramsen, col) {
+            var num = 0.00
+            for (let index = 0; index < paramsst.length; index++) {
+
+                num = new Number(paramsen[index]) / new Number(paramsst[index]);
+                // alert(num)
+                hot.setDataAtCell(index + 2, col, num.toFixed(2))
+            }
+        }
+        avg(hot.getData(2, 2, 6, 2), hot.getData(2, 4, 6, 4), 3)
+        avg(hot.getData(2, 6, 6, 6), hot.getData(2, 8, 6, 8), 7)
+
+        //当数据改变，事件触发 会从新算取数值
+        container.onchange = function () {
+            var str1 = hot.getCopyableText(2, 2, 5, 2).split("\n");
+            console.log(str1)
+            function f(params) {
+                var num = 0
+                for (let index = 0; index < params.length; index++) {
+                    num += new Number(params[index])
+                }
+                return num;
+            }
+            //    console.log(f(str1))//字符串拆分成数组在计算的和
+            hot.setDataAtCell(6, 2, f(str1))//输入索引位置为6 2的单元格
+
+
+            // //取平均值函数//param1 数量 param2 总额 col想要设置的列数
+            // function avg(paramsst, paramsen, col) {
+            //     var num = 0.00
+            //     for (let index = 0; index < paramsst.length; index++) {
+
+            //         num = new Number(paramsen[index]) / new Number(paramsst[index]);
+            //         // alert(num)
+            //         hot.setDataAtCell(index + 2, col, num.toFixed(2))
+            //     }
+            // }
+            // avg(hot.getData(2, 2, 6, 2), hot.getData(2, 4, 6, 4), 3)
+            // avg(hot.getData(2, 6, 6, 6), hot.getData(2, 8, 6, 8), 7)
+
+
+            //给店均额总数赋值
+            //var str = hot.getCopyableText(2,3,5,3).split("\n");
+            //console.log(str)
+            //
+            // hot.setDataAtCell(6, 3, f(hot.getCopyableText(2, 3, 5, 3).split("\n")))
+            //    console.log(str)
+            hot.setDataAtCell(6, 4, f(hot.getCopyableText(2, 4, 5, 4).split("\n")))
+            // hot.setDataAtCell(6, 5, f(hot.getCopyableText(2,5,5,5).split("\n")))
+            hot.setDataAtCell(6, 6, f(hot.getCopyableText(2, 6, 5, 6).split("\n")))
+            // hot.setDataAtCell(6, 7, f(hot.getCopyableText(2, 7, 5, 7).split("\n")))
+            hot.setDataAtCell(6, 8, f(hot.getCopyableText(2, 8, 5, 8).split("\n")))
+            // 以上是进项表格中的单元格加减运算
+            // console.log(hot.getData(2,4,6,4))
+            // 一下是计算百分制
+            function divisio(params, col) {
+                var num = 0.00
+                for (let index = 0; index < params.length - 1; index++) {
+
+                    num = ((new Number(params[index])) / params[params.length - 1]) * 100
+                    hot.setDataAtCell(index + 2, col, num.toFixed(2) + '%')
+                }
+                console.log(params[params.length - 1])
+                return num;
+            }
+            //调用方法
+            divisio(hot.getData(2, 4, 6, 4), 5);
+            divisio(hot.getData(2, 8, 6, 8), 9);
+
+
+            //取平均值函数//param1 数量 param2 总额 col想要设置的列数
+            function avg(paramsst, paramsen, col) {
+                var num = 0.00
+                for (let index = 0; index < paramsst.length; index++) {
+
+                    num = new Number(paramsen[index]) / new Number(paramsst[index]);
+                    // alert(num)
+                    hot.setDataAtCell(index + 2, col, num.toFixed(2))
+                }
+            }
+            avg(hot.getData(2, 2, 6, 2), hot.getData(2, 4, 6, 4), 3)
+            avg(hot.getData(2, 6, 6, 6), hot.getData(2, 8, 6, 8), 7)
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+<script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="hot"></div>
+<script type="text/javascript">
+  var colHeaders = ['来源', 'ID', '类型', '备注']
+  var container = document.getElementById('hot');
+  var hot = new Handsontable(container,
+    {
+        nestedHeaders: [
+  ['A', { label: 'B', colspan: 8 }, 'C'],
+  ['D', { label: 'E', colspan: 4 }, { label: 'F', colspan: 4 }, 'G'],
+  ['H', { label: 'I', colspan: 2 }, { label: 'J', colspan: 2 }, { label: 'K', colspan: 2 }, { label: 'L', colspan: 2 }, 'M'],
+  ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
+],
+      colHeaders: colHeaders,
+      rowHeaders:true,
+      startRows: 20,
+      startcol:4,
+      maxCols: 4,
+      maxRows:100,
+      colWidths:100
+    });
+</script>
+</body>
+</html>

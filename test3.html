@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+    <style>
+        td.custom-cell {
+            color: #fff;
+            background-color: rgb(36, 152, 209);
+            ;
+        }
+
+        td.custom-cell2 {
+            color: #000;
+            background-color: rgb(204, 255, 255);
+            ;
+        }
+
+        td.custom-cell3 {
+            color: #000;
+            background-color: rgb(247, 247, 247);
+            ;
+        }
+
+        .custom-table thead th:nth-child(even),
+        .custom-table tbody tr:nth-child(odd) th {
+            background-color: #d7f1e1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hot"></div>
+
+
+    <script type="text/javascript">
+        const container = document.getElementById('hot');
+        var a = '1.外部因素（1）2020年受疫情影响，前3个月销售额都未到到预期。21年中国消费市场恢复正规，顾客消费需求持续向好，1-3月份保证了业绩的平稳。（2）随着90后开始成为消费的主力，该年龄段的顾客群体，与企业的客群定位比较吻合；（3）四个一线城市，作为国际大都会，商圈众多，顾客消费能力强；'
+        var b = '1.市场政策：（1）上海区，在区域二级商圈，新开3家购物中心店，3月1家，7月1家，9月1家，确保开店2月后盈利；（2）深圳、广州在区域二级商圈，各开一家购物中心新店，6月份前开店，2月后确保盈利；（3）北京区域关闭1-2家利润较差店铺，4月1家，6月1家；'
+        const hot = new Handsontable(container, {
+            data: [
+                ['类别', '序号', '2020年实绩', '', '', '', '2021年实绩', '', '', ''],
+                ['', '', '店铺数', '店均额', '销售额', '占比', '店铺数', '店均额', '销售额', '占比'],
+                ['北京', '1', '4', '231.34', '925.38', '22.99%', '3', '310.00', '930.00', '20.00%'],
+                ['上海', '2', '3', '135.14', '405.43', '10.07%', '6', '93.00', '558.00', '12.00%'],
+                ['广州', '3', '8', '208.86', '1670.85', '41.51%', '9', '217.00', '1953.00', '42.00%'],
+                ['深圳', '4', '5', '204.74', '1023.72', '25.43%', '6', '201.50', '1209.00', '26.00%'],
+                ['合计', '5', '20', '201.27', '4025.38', '100.00', '24', '193.75', '4650.00', '100.00%'],
+                ['原因分析', '6', this.a, '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['基本对策', '7', this.b, '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', ''],
+            ],
+            colHeaders: true,
+            rowHeaders: true,
+            width: 'auto', // 表格宽度
+            height: 'auto', // 表格高度、设置以后才会出现scroll
+            colWidths: [130, 300, 300, 197, 70, 70, 70, 70, 70, 70],
+            fixedColumnsLeft: 2,//固定左边列数
+            fixedRowsTop: 2,//固定上边横数
+            manualColumnMove: true,
+            manualRowMove: true,
+            contextMenu: true,
+            comments: true,
+            cell: [
+                { row: 0, col: 1, comment: { value: 'A read-only comment.', readOnly: true } },
+                { row: 0, col: 3, comment: { value: 'A read-only comment.', readOnly: true } },
+                { row: 0, col: 0, className: 'custom-cell', },
+                { row: 0, col: 1, className: 'custom-cell', },
+                { row: 0, col: 2, className: 'custom-cell', },
+                { row: 0, col: 6, className: 'custom-cell', },
+                { row: 1, col: 2, className: 'custom-cell', },
+                { row: 1, col: 3, className: 'custom-cell', },
+                { row: 1, col: 4, className: 'custom-cell', },
+                { row: 1, col: 5, className: 'custom-cell', },
+                { row: 1, col: 6, className: 'custom-cell', },
+                { row: 1, col: 7, className: 'custom-cell', },
+                { row: 1, col: 8, className: 'custom-cell', },
+                { row: 1, col: 9, className: 'custom-cell', },
+                { row: 1, col: 10, className: 'custom-cell', },
+                //灰色
+                { row: 2, col: 0, className: 'custom-cell3', },
+                { row: 2, col: 1, className: 'custom-cell3', },
+                { row: 3, col: 0, className: 'custom-cell3', },
+                { row: 3, col: 1, className: 'custom-cell3', },
+                { row: 4, col: 0, className: 'custom-cell3', },
+                { row: 4, col: 1, className: 'custom-cell3', },
+                { row: 5, col: 0, className: 'custom-cell3', },
+                { row: 5, col: 1, className: 'custom-cell3', },
+                { row: 6, col: 0, className: 'custom-cell3', },
+                { row: 6, col: 1, className: 'custom-cell3', },
+                { row: 7, col: 0, className: 'custom-cell3', },
+                { row: 7, col: 1, className: 'custom-cell3', },
+                { row: 9, col: 0, className: 'custom-cell3', },
+                { row: 9, col: 1, className: 'custom-cell3', },
+                //青色
+                { row: 2, col: 6, className: 'custom-cell2', },
+                { row: 3, col: 6, className: 'custom-cell2', },
+                { row: 4, col: 6, className: 'custom-cell2', },
+                { row: 5, col: 6, className: 'custom-cell2', },
+                { row: 6, col: 8, className: 'custom-cell2', },
+                { row: 2, col: 9, className: 'custom-cell2', },
+                { row: 3, col: 9, className: 'custom-cell2', },
+                { row: 4, col: 9, className: 'custom-cell2', },
+                { row: 5, col: 9, className: 'custom-cell2', },
+                { row: 7, col: 2, className: 'custom-cell2', },
+                { row: 9, col: 2, className: 'custom-cell2', },
+            ],
+            manualColumnResize: true,//自定义列高
+            licenseKey: 'non-commercial-and-evaluation',
+            mergeCells: [{ row: 0, col: 0, rowspan: 2, colspan: 1 },
+            { row: 0, col: 1, rowspan: 2, colspan: 1 },
+            { row: 0, col: 2, rowspan: 1, colspan: 4 },
+            { row: 0, col: 6, rowspan: 1, colspan: 4 },
+            { row: 9, col: 2, rowspan: 2, colspan: 8 },
+            { row: 7, col: 2, rowspan: 2, colspan: 8 },
+            { row: 9, col: 0, rowspan: 2, colspan: 1 },
+            { row: 7, col: 0, rowspan: 2, colspan: 1 },
+            { row: 9, col: 1, rowspan: 2, colspan: 1 },
+            { row: 7, col: 1, rowspan: 2, colspan: 1 },
+            ],
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="hot"></div>
+    <script type="text/javascript">
+  const container = document.getElementById('hot');
+  const hot = new Handsontable(container, {
+  data: [
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+                ['2017-01', '北京', '冰箱', '3399', 530,'','','','',''],
+            ],   
+  colHeaders: true,
+  rowHeaders: false,
+  width: '400',
+  height: '300',
+  nestedHeaders: [
+    ['','', { label: '2020年实绩', colspan: 4 }, { label: '2021年方针', colspan: 4 }],
+    ['类别','序号', '店铺数', '店均额','销售额','占比', '店铺数','店均额','销售额','占比'],
+
+  ],
+  fixedColumnsLeft: 2,//固定左边列数
+  fixedRowsTop: 0,//固定上边横数
+  manualColumnMove: true,
+  manualRowMove: true,
+  licenseKey: 'non-commercial-and-evaluation',
+  mergeCells: [
+                    {row:0, col:0, rowspan:2, colspan:1},
+                    {row:0, col:1, rowspan:2, colspan:1},
+                    {row:6, col:2, rowspan:1, colspan:8},
+                    {row:5, col:2, rowspan:1, colspan:8},
+                    // {row:5, col:1, rowspan:1, colspan:1},
+                ],
+});
+    </script>
+</body>
+</html>
